@@ -1,0 +1,699 @@
+50 Most Asked JavaScript Interview Questions
+#
+javascript
+#
+programming
+#
+webdev
+#
+interview
+You've been learning JavaScript and planning to apply for jobs. Prepare for the interview by answering most asked 50 JavaScript interview questions.
+
+Table of Contents 
+What is JavaScript?
+What is the difference between primitive and reference types in JavaScript?
+What is the difference between == and ===?
+What is a higher order function?
+What is a pure function?
+What is the function currying?
+What is the difference between var, let, and const?
+What is the difference between global and local scope?
+What is the temporal dead zone?
+What is hoisting?
+What is closure?
+How to compare two objects?
+What are all the possible ways to create objects in JavaScript?
+What is prototype chain?
+What is the difference between Call, Apply and Bind?
+What is JSON and its common operations?
+What is the purpose of the array slice method?
+What is the purpose of the array splice method?
+What is the difference between slice and splice?
+What are lambda or arrow functions?
+What is IIFE(Immediately Invoked Function Expression)?
+How do you decode or encode a URL in JavaScript?
+What is memoization?
+What are classes in ES6?
+What are modules?
+Why do you need modules?
+What is a promise
+What are the three states of promise?
+What is a callback function?
+Why do we need callbacks?
+What is a callback hell and how to avoid it?
+What is promise chaining?
+What is promise.all?
+What is the purpose of the race method in the promise?
+What is a strict mode in javascript?
+Why do you need strict mode?
+How do you declare strict mode?
+What is the purpose of the delete operator?
+What is typeof operator?
+What is undefined?
+What is null?
+What is the difference between null and undefined?
+What is eval?
+What is the difference between window and document?
+How do you access history in javascript?
+How do you detect caps lock key turned on or not?
+What is isNaN?
+What are the differences between undeclared and undefined variables?
+What are global variables?
+What are the problems with global variables?
+What is JavaScript?
+JavaScript is a dynamically typed, interpreted, scripting language. It supports different paradigms such as Functional, OOP, and Procedural. It's the only language that's executed right on the browser, that's why it's also called the language of the web.
+
+dynamically typed - means that the variable can hold multiple types throughout its lifetime
+let someVarName = "JavaScript" // JavaScript
+someVarName = 12 // 12
+someVarName = {name: "JavaScript"} // {name: "JavaScript"}
+someVarName = false // false
+someVarName = [1,2,3] // [1,2,3]
+interpreted - means that instead of code being compiled and then executed like in languages such as C, C++, and Java, code in JavaScript code is executed with JIT compiler
+What is the difference between primitive and reference types in JavaScript?
+Primitive Types
+Primitive types can hold only a single value while non-primitive types have multiple.
+JavaScript primitive types
+""
+false
+1
+null
+undefined
+123n
+Symbol("symbol")
+Non-primitive or Reference types
+Non-primitive types can contain multiple values of primitive at a time
+const hobbies = ["Reading", "Calisthenics", "Swimming"]
+const person = {
+ name: "Jaxongir",
+ age: 27,
+ country: "Uzbekistan"
+ hobbies
+}
+
+What is the difference between == and ===?
+== - comparison operator compares only values not their types and if two of the same values of the different types are compared then type conversion happens. Which is one type converted to another type.
+console.log(1 == "1") // true
+console.log(false == "0") // true
+=== - strict equal comparison operator first compares data types of the values. If they are the same type then values are compared else they aren't the same type regardless of whether the values are the same it returns false
+console.log(1 === "1") // false
+console.log(false === "0") // false
+What is a higher-order function?
+HOF(Higher order function) - is the function that takes another function as an argument and calls it within it's body or returns function as the value
+Examples of HOF are: map, filter, for each, reduce, etc...
+const nums = [1,2,3,4]
+const multiplyNum = nums.map(num => num * 2)
+console.log(multiplyNum) // [2,4,6,8]
+
+const greet = (greeting)=> name => `${greeting} ${name}!`
+const func = greet("Hello")
+func("Jaxongir") // Hello Jaxongir!
+func("Lola") // Hello Lola!
+What is a pure function?
+Pure function - is the function without any side-effects and it never mutates the argument and returns a copy of the same type as an argument.
+// Impure function
+const add = (num1, num2)=> {
+ num1 = 10
+ return num1 + num2
+}
+
+// Pure function
+const add = (num1, num2)=> num1 + num2
+What is the function currying?
+Currying - is the functional programming technique of transforming function with the multiple arguments with the multiple function with the single argument
+const curry = (f) => (a) => (b) => f(a, b);
+
+const product = (num1, num2) => num1 * num2;
+
+const curriedProduct = curry(product);
+
+console.log(curriedProduct(20)(5)) // 100
+console.log(curriedProduct(1)(10)) // 10
+console.log(curriedProduct(0)(100)) // 0
+
+What is the difference between var, let, and const?
+let and const
+
+let and const is ES6 features that introduced in 2015
+variables declared with either let or const is scoped {} which means that they are invisible outside {} that they are defined
+variables decalred with them is not hoisted which means is that we can't access before their defined var
+var is ES5 feature and
+if variable is declared within function with var keyword then it's scoped within that function which means is that it's not accessible outside that function body it's defined
+in all other cases variables declared with var keyword is global scoped
+if(10 > 0){
+ var test = "right"
+ let test2 = "test"
+}
+console.log(test) // right
+console.log(test2) // ReferenceError: test2 is not defined
+
+What is the difference between global and local scope?
+global scope - when variables and functions are accessible globally. So when you declare let and const variable outside any {} they are globally scoped. and when variable declared with var outside function is global scoped
+local scope - as long variables declared with let and const is within {} they are local scoped to the body of that {} and inwards
+// global scope variable
+const name = "Jaxongir"
+
+// global scoped function
+const func = ()=>{
+ // local scoped variable
+ let age = 25
+}
+func()
+console.log(name) // Jaxongir
+console.log(age) // ReferenceError: age is not defined
+What is the temporal dead zone?
+Temporal dead zone - is when variable declared with let or const is un-reachable. This happens cause they are not hoisted. Or even simpler they are invisible or in Temporal dead zone during from they are scoped within {} to memory is allocated for them
+ const fuc = () => {
+  console.log(name);
+  console.log(age);
+  var age = 27;
+  let name = "Jaxongir";
+};
+
+fuc() // ReferenceError: Cannot access 'name' before initialization
+
+What is hoisting?
+hoisting - is when variables declared with var and function declarations moved to the top of the current scope before they are executed thus they are accessible before they are declared.
+greeting("Jaxongir")
+
+function greeting(name) {
+  console.log("Hello " + name) // Hello Jaxongir
+  console.log(age) // undefined
+  var age = 26;
+}
+
+What is closure?
+closure - is basically when function has always access to it's surrounding scope even after surrounding scope is already executed. Closure is created each time you create a function. Each time function is created that function can acccess variables, functions, objects defined in it's surrounding scope
+let name = "Jaxongir";
+const fun = () => {
+  console.log(name) // Jaxongir
+};
+fun()
+
+const outerFunc = (message)=>{
+  let test = "string"
+  const innerFunc = (text)=>{
+   console.log(message, test, text) 
+  }
+}
+const test = outerFunc("Hello")
+test("JavaScript")
+
+How to compare two objects?
+For in depth explanation, have a look at this excellent stack overflow
+const obj1 = {name: "Lola"}
+const obj2 = {name: "Lola"}
+JSON.stringify(obj1) === JSON.stringify(obj2) // true
+What are all the possible ways to create objects in JavaScript?
+// object literals
+const person = {name: "Jaxongir}
+
+// Object constructor
+const person = new Object();
+console.log(person);
+
+// Object create method
+const person = Object.create({});
+console.log(person);
+
+// singleton pattern
+const person = new (function () {
+  this.name = "Jaxongir";
+})();
+
+// Constructor function
+function Person(name) {
+  this.name = name;
+}
+const person = new Person("Jaxongir");
+
+
+// ES6 Class
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+}
+const person = new Person("Jaxongir");
+console.log(person);
+
+What is prototype chain?
+Prototype chain - is when object inherit it's properties and methods from it's prototype object
+Root Constructor function that every other type inherits in JavaScript is Object
+ const company = {
+  companyName: "UZS",
+};
+const teacher = {
+  fullname: "Jaxongir Rahimov",
+  __proto__: company,
+};
+console.log(teacher.companyName) // UZS
+console.log(teacher.fullname) // Jaxongir Rahimov
+
+What is the difference between Call, Apply and Bind?
+While there's difference how used between them, common thing between them is that to provide the context for this keyword within function body and pass in arguments
+NOTE: they can only be called on function declaration not on arrow functions. Coz arrow function does not bind this keyword
+
+call - calls the function with the provided this value and additional arguments. First argument is always going to be context of this or object and it can take n arguments
+const person1 = {
+  name: "Jaxongir",
+  age: 27,
+  country: "Uzbekistan",
+  gender: "male",
+  hobbies: ["Reading", "Calisthenics", "Swimming"],
+};
+const person2 = {
+  name: "Lola",
+  age: 21,
+  country: "Russia",
+  gender: "female",
+  hobbies: ["Reading", "Knitting", "Swimming", "Badminton"],
+};
+
+function printBio(greeting) {
+  console.log(
+    `${greeting} ${this.gender === "male" ? "His name is" : "Her name is"} ${
+      this.name
+    } and is ${this.age} years old and is from ${
+      this.country
+    } and has following hobbies ${this.hobbies.join(", ")}`
+  );
+}
+printBio.call(person1, "Hello") // Hello His name is Jaxongir and is 27 years old and is from Uzbekistan
+printBio.call(person2, "Hello") // Hello Her name is Lola and is 21 years old and is from Russia
+
+apply - calls the function providing the context of this value and passes array of arguments
+function printBio(greeting) {
+  console.log(
+    `${greeting} ${this.gender === "male" ? "His name is" : "Her name is"} ${
+      this.name
+    } and is ${this.age} years old and is from ${this.country}`
+  );
+}
+printBio.apply(person1, ["Hello"]);
+printBio.apply(person2, ["Hello"]);
+bind - returns new function which can be stored variable and when that function is called this set to the provided object and passed values
+function printBio(greeting) {
+  console.log(
+    `${greeting} ${this.gender === "male" ? "His name is" : "Her name is"} ${
+      this.name
+    } and is ${this.age} years old and is from ${this.country}`
+  );
+}
+printBio.bind(person1)("Hello");
+printBio.bind(person2)("Hello");
+
+What is JSON and its common operations?
+JSON stands for JavaScript Object Notation that's used to send data on the network. Even Douglas Crockford, the ex-Atari employee and man who coined and popularized the term ‘JSON’, states he ‘discovered’ JSON rather than ‘invented’
+It has mainly two operations
+Parsing - Converting from text to original data
+JSON.parse("{name: "Jaxongir"}") // {name: "Jaxongir"}
+Stringification - Converting valid data to string format
+JSON.stringify({name: "Jaxongir"}) // "{name: "Jaxongir"}"
+What is the purpose of the array slice method?
+Array slice method used to copy part of a string and array so that we can work with the copy of array instead of modifying it. It's used to prevent mutation. here's the link to slice
+let fullname = "Jaxongir Rahimov"
+console.log(fullname.slice(0, 10))
+const people = ["Lola", "Jol", "Mat", Jaxongir"]
+conosle.log(people.slice(0,2))
+
+What is the purpose of the array splice method?
+Array splice method is used to delete specified item in the given index or add single or multiple items in the given index. link to the splice
+const people = ["Lola", "Jaxongir", "Test", "Horum"];
+
+// Deleting single item in the given index
+console.log(people); // ["Lola", "Jaxongir", "Test", "Horum"]
+people.splice(2, 1);
+console.log(people); // ["Lola", "Jaxongir", "Horum"]
+
+// Adding multiple items in the given index
+people.splice(2, 0, "Madina", "Nodira");
+console.log(people); // ["Lola", "Jaxongir", "Madina", "Nodira", "Horum"]
+
+What is the difference between slice and splice?
+slice - return the copy of the array and it does not mutate array
+const people = ["Lola", "Jaxongir", "Test", "Horum"];
+console.log(people.slice(0,2)) // ["Lola", "Jaxongir")
+console.log(peopl) // ["Lola", "Jaxongir", "Test", "Horum"]
+splice - removes single or multiple items or add single or multiple items and it makes these changes in-place
+const people = ["Lola", "Jaxongir", "Test", "Horum"];
+people.splice(2, 1);
+console.log(people); // ["Lola", "Jaxongir", "Horum"]
+What are lambda or arrow functions?
+arrow function - are ES6 feature with some differences than normal function declaraions
+
+arrow functions don't have this keyword but it uses whatever value of this in it's surrounding scope
+arrow functions can't be used to create constructor functions as for above mentioned reason
+arrow functions don't have super args
+const person = {
+  name: "Jaxongir",
+  test: () => {
+    console.log(arguments) // ReferenceError: arguments is not defined
+    console.log(this) // references to window object
+  },
+  test2() {
+    console.log(arguments) // [2, 13, 321, 2]
+    console.log(this) // {name: 'Jaxongir', test: ƒ, test2: ƒ}
+  },
+};
+
+person.test();
+person.test2(2, 13, 321, 2);
+
+
+What is IIFE(Immediately Invoked Function Expression)?
+IIFE - is the function as the name makes it obvious, executed immediately after it's declared. And it's mainly used to create Module design pattern, Singleton design patterns,
+const person = (() => {
+  let name = "Jaxongir";
+  let age = 27;
+  return {
+    name,
+    age,
+  };
+})();
+console.log(person) // {name: "Jaxongir", age: 27}
+
+How do you decode or encode a URL in JavaScript?
+encodeURI - takes a string of url as a parameter and encodes it and return the encoded URI
+decodeURI - takes encodedURI and returns the decoded url
+const uri = "https://mozilla.org/?x=шеллы";
+const encoded = encodeURI(uri);
+console.log(encoded); // https://mozilla.org/?x=%D1%88%D0%B5%D0%BB%D0%BB%D1%8B
+console.log(decodeURI(encoded)) // https://mozilla.org/?x=шеллы
+What is memoization?
+Memoization - is the technique in programming which optimizes the performance of the app by caching the result of the expensive function calls and returning the cached data as long as the same input occurs. And only performing that same expensive function calculation when different input is given
+const fib = (num, memo = []) => {
+  if (memo[num]) return memo[num];
+  if (num <= 2) return 1;
+  const res = fib(num - 1, memo) + fib(num - 2, memo);
+  memo[num] = res;
+  return res;
+};
+
+console.log(fib(5));
+
+What are classes in ES6?
+ES6 - classes allow to write JavaScript programs in OOP style like in Java or other OOP languages. While under the hood, ES6 classes converted into constructor functions and Prototypical inheritance comes to play, it's still easier to write OOP style code especially for those who's coming from OOP languages.
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  eat(food) {
+    console.log(`${this.name} eats ${food}`);
+  }
+  sleep(time) {
+    console.log(`${this.name} sleeps at ${time}`);
+  }
+  wakeup(time) {
+    console.log(`${this.name} wakesup at ${time}`);
+  }
+}
+class Teacher extends Person {
+  constructor(name, age, role, salary, hobbies) {
+    super(name, age);
+    this.role = role;
+    this.salary = salary;
+    this.hobbies = hobbies;
+  }
+  printBio() {
+    console.log(
+      `${this.name} is ${this.age} years old. And he is ${
+        this.role
+      } with the salary of $${
+        this.salary
+      }. His hobbies are: ${this.hobbies.join(", ")}`
+    );
+  }
+}
+const jaxongir = new Teacher("Jaxongir", 27, "Full-Stack mentor", 1500, [
+  "Reading",
+  "Calisthenics",
+  "Swmming",
+]);
+
+jaxongir.eat("Caviar") // Jaxongir eats Caviar
+jaxongir.sleep("23:00 pm") // Jaxongir sleeps at 23:00 pm
+jaxongir.wakeup("09:00 am") // Jaxongir wakesup at 09:00 am
+jaxongir.printBio() // Jaxongir is 27 years old. And he is Full-Stack mentor with the salary of $1500. His hobbies are: Reading, Calisthenics, Swmming 
+
+What are modules?
+Modules - are containers for the related reusable code which can be imported in multiple files.
+
+Why do you need modules?
+Modules are great for data privacy, modularity, maintainability, namespacing, and reusability of the code. Basically they allow to think about the software in isolation which decreases the load in the brain and makes it easy to think about the overall structure of the program.
+
+What is a promise
+Promise - the object that indicates the result of the asynchronous actions which either could be failure (rejected) or successful (fulfilled).
+const promise = new Promise(function (resolve, reject) {
+  // promise description
+});
+
+const promise = new Promise(
+  (resolve) => {
+    setTimeout(() => {
+      resolve("I'm a Promise!");
+    }, 5000);
+  },
+  (reject) => {}
+);
+
+promise.then((value) => console.log(value));
+What are the three states of promise?
+3 states of Promise are as described below:
+
+Fulfilled - when asynchronous request is successfully completed and response is given
+Rejected - when asynchronous request is unsuccessfull and no response is given which could be due to network error, authentication or authorization error and so on
+Pending - which is in between request being sent and response is coming back
+What is a callback function?
+callback - is the function that's passed as the argument to different function which then invoked inside that function body
+const nums = [1, 2, 3, 4, 5];
+const myMap = (callbackFunc, nums) => {
+  newNums = [];
+  for (const num of nums) {
+    newNums.push(callbackFunc(num));
+  }
+  return newNums;
+};
+const modifiedNums = myMap((num) => num * num, nums);
+console.log(modifiedNums) // [1, 4, 9, 16, 25]
+
+Why do we need callbacks?
+Callback function is very useful especially on asynchronous operations like: when data is fetched or failed callback is called to indicate whether request is success or failure. Or in events when user clicks the button, callback is fired to execute code within callback body.
+const generateReportBtn = document.querySelector(".generate-report");
+const generateReport = ()=>{
+  // do something
+}
+generateReportBtn.addEventListener("click", generateReport)
+
+const populatePeople = ()=>{
+// do something
+}
+setTimeout(populatePeople, 2000)
+What is a callback hell and how to avoid it?
+Callback hell - is the term used to describe when callback function is nested within one another too deeply which makes it harder to debug this code as it's very unreadable to even author of this code. Solution is using async await or promise chaining.
+Callback hell example. This gives me nightmares in my dreams
+fs.readdir(source, function (err, files) {
+  if (err) {
+    console.log('Error finding files: ' + err)
+  } else {
+    files.forEach(function (filename, fileIndex) {
+      console.log(filename)
+      gm(source + filename).size(function (err, values) {
+        if (err) {
+          console.log('Error identifying file size: ' + err)
+        } else {
+          console.log(filename + ' : ' + values)
+          aspect = (values.width / values.height)
+          widths.forEach(function (width, widthIndex) {
+            height = Math.round(width / aspect)
+            console.log('resizing ' + filename + 'to ' + height + 'x' + height)
+            this.resize(width, height).write(dest + 'w' + width + '_' + filename, function(err) {
+              if (err) console.log('Error writing file: ' + err)
+            })
+          }.bind(this))
+        }
+      })
+    })
+  }
+})
+What is promise chaining?
+Promise Chaining - is the solution to callback hell that we saw above. Instead of nesting one callback within another callback, we use result of the previously fullfilled promise and return fullfilled promise for the next promise in the chain.
+new Promise(function(resolve, reject) {
+
+  setTimeout(() => resolve(1), 1000); // (*)
+
+}).then(function(result) { // (**)
+
+  alert(result); // 1
+  return result * 2;
+
+}).then(function(result) { // (***)
+
+  alert(result); // 2
+  return result * 2;
+
+}).then(function(result) {
+
+  alert(result); // 4
+  return result * 2;
+
+});
+What is promise.all?
+Promise.all - is the static method that takes arraf of iterable promises as an input and returns a single Promise which is the values of fulfilled promises in the array. The fulfilled promises are in the same order as their iterable promise. If any one the promise is rejected the whole operations is rejected. And even if last promise in the promise array is fulfilled, Promise.all() does not stop operation but waits until each and every promise is fulfilled.
+const promise1 = Promise.resolve(3);
+const promise2 = 42;
+const promise3 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 100, 'foo');
+});
+
+Promise.all([promise1, promise2, promise3]).then((values) => {
+  console.log(values);
+});
+// Expected output: Array [3, 42, "foo"]
+
+What is the purpose of the race method in promise?
+Promise.race - is the static method that takes an iterable promises as an input and returns the first resolved promise value.
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 500, 'one');
+});
+
+const promise2 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 100, 'two');
+});
+
+Promise.race([promise1, promise2]).then((value) => {
+  console.log(value);
+  // Both resolve, but promise2 is faster
+});
+// Expected output: "two"
+
+
+What is a strict mode in javascript?
+Strict mode - in JavaScript used to set javascript environment to be in sticter mode which avoid errors such as declaring variable without keywords var,let,const. Strict can be initiated for the whole environment or for specific function.
+
+Why do you need strict mode?
+We neeed strict mode because:
+
+Eliminates some JavaScript silent errors by changing them to throw errors.
+Fixes mistakes that make it difficult for JavaScript engines to perform optimizations: strict mode code can sometimes be made to run faster than identical code that's not strict mode.
+Prohibits some syntax likely to be defined in future versions of ECMAScript.
+How do you declare strict mode?
+We can enable strict mode by just typing "use strict" either globally or within specific function.
+// Non strict mode
+age = 27;
+console.log(age) // 27
+
+// Strict mode
+"use strict";
+age = 27;
+console.log(age) // ReferenceError: age is not defined
+What is the purpose of the delete operator?
+delete operator - is used to delete a property of an object. if that property value is an object then reference to that object is lost
+const person = {
+  name: "John",
+  age: 34,
+  country: "USA",
+};
+console.log(person) // {name: "John", age: 34, country: "USA"}
+delete person.country;
+console.log(person) // {name: "John", age: 34}
+
+What is typeof operator?
+typeof operator - is a function which is used to know what is the type of the expression passed to it
+console.log(typeof 1) // number
+console.log(typeof "hello") // string
+console.log(typeof false) // boolean
+console.log(typeof []) // object
+console.log(typeof {}) // object
+console.log(typeof undefined) // undefined
+console.log(typeof null) // object
+console.log(typeof NaN) // number
+
+What is undefined?
+undefined - is primitive data type. When variable declared but not value's given then in the console it's result is undefined.
+let name;
+console.log(name) // undefined
+What is null?
+null - is also primitive data type. And it's used to indicate the absense of the value.
+let name = null;
+console.log(name) // null
+What is the difference between null and undefined?
+*null
+
+null is primitive data type and indicates that no memory is allocated for the variable in the memory
+when used on comparison converted to 0
+typeof null is an object
+undefined
+
+undefined - is also primitive data type and indicates that memory is allocated for the variable and it's declared but no values is assinged
+when used on comparison converted to NaN
+typeof undefined is undefined
+What is eval?
+eval - function used to execute string of code as JavaScript script. string of code can be expressions, function calls etc..
+Warning: Executing JavaScript from a string is an enormous security risk. It is far too easy for a bad actor to run arbitrary code when you use eval() - MDN
+const add = (num1, num2) => num1 + num2;
+console.log(eval("add(1, 9)")); // 10
+
+What is the difference between window and document?
+window
+
+window object is the root level element on each page
+it's by default available in every page
+it's has methods like confirm, alert
+document or DOM is the direct child property of itself
+document
+
+document or DOM is the direct child of the window object. and it's representation of HTML
+it can be referenced via document or window.document
+it let's access DOM elements via methods such as: querySelector, getElementById, querySelectorAll and more
+it let's us to CRUD on the UI
+How do you access history in javascript?
+We can page history via using window object's history object. history object has back and forward methods.
+// moves back to previous URI
+window.history.back()
+
+// moves forward to next URI
+window.history.forward()
+How do you detect caps lock key turned on or not?
+We can detect whether caps lock key is activated or not by using KeyboardEvent.getModifierState() which returns boolean value true for caps lock key is activated and false for not activated. It's not only detects capslock but also ScrollLock, NumsLock as well.
+const heading = document.querySelector("h1");
+
+document.body.addEventListener("click", (e) => {
+  const isCapsLockOn = e.getModifierState("CapsLock");
+  if (isCapsLockOn) {
+    heading.textContent = "CapsLock is Activated";
+  } else {
+    heading.textContent = "CapsLock is Deactivated";
+  }
+});
+
+What is isNaN?
+isNaN - is built-in function which is used to check whether the given input is NaN(Not a Number)
+console.log(isNaN("1")) // false it's a number;
+console.log(isNaN("st")) // true it's not a number
+
+What are the differences between undeclared and undefined variables?
+undeclared
+
+variable is a variable which is not declared or assigned value when try to access it, error is thrown
+no memory is allocated for them as they don't exist yet
+undefined
+
+variable is a variable which is declared but no value is assigned.
+memory is allocated and when try to print in the console, undefined is declared
+What are global variables?
+global variables - are variables that are declared outside {} and function and they are accessible everywhere
+// global variable
+let name = "Jaxongir"
+
+(()=>{
+ console.log(name) // Jaxongir
+})()
+
+What are the problems with global variables?
+There are many problems with the global variables such as:
+
+namespace collision
+maintanability
+testability

@@ -1,0 +1,221 @@
+{
+  "cars": [
+    {
+      "id": 1,
+      "title": "Toyota Tacoma",
+      "year": "2021",
+      "brend": "toyota",
+      "price": "75",
+      "img": "/img/toyotaTacom.png",
+      "images": [
+        {
+          "id": 1,
+          "img": "/img/toyotaTacom.png"
+        },
+        {
+          "id": 2,
+          "img": "/img/toy1.webp"
+        },
+        {
+          "id": 3,
+          "img": "/img/toy2.jfif"
+        }
+      ],
+      "category": "extreme",
+      "model": "pickup"
+    },
+    {
+      "id": 2,
+      "title": "Hundai Sntafe",
+      "year": "2021",
+      "brend": "hundai",
+      "images": [
+        {
+          "id": 1,
+          "img": "/img/sntafe.png"
+        },
+        {
+          "id": 2,
+          "img": "/img/snt2.jpg"
+        },
+        {
+          "id": 3,
+          "img": "/img/snt3.jpg"
+        }
+      ],
+
+      "price": "75",
+      "img": "/img/sntafe.png",
+      "category": "biznes",
+      "model": "jeep"
+    },
+    {
+      "id": 3,
+      "title": "Mercedes AMG",
+      "year": "2021",
+      "price": "125",
+      "images": [
+        {
+          "id": 1,
+          "img": "/img/amg.png"
+        },
+        {
+          "id": 2,
+          "img": "/img/amg2.jpg"
+        },
+        {
+          "id": 3,
+          "img": "/img/amg3.jpg"
+        }
+      ],
+      "brend": "mercedes",
+      "img": "/img/amg.png",
+      "category": "premium",
+      "model": "sport"
+    },
+    {
+      "id": 4,
+      "title": "Ford Focus",
+      "year": "2022",
+      "price": "75",
+      "brend": "ford",
+      "images": [
+        {
+          "id": 1,
+          "img": "/img/ford.png"
+        },
+        {
+          "id": 2,
+          "img": "/img/focus2.jpg"
+        },
+        {
+          "id": 3,
+          "img": "/img/focus3.jpg"
+        }
+      ],
+      "img": "/img/ford.png",
+      "category": "econom",
+      "model": "hatchback"
+    },
+    {
+      "id": 5,
+      "title": "Mercedes G",
+      "year": "2021",
+      "brend": "mercedes",
+      "price": "75",
+      "images": [
+        {
+          "id": 1,
+          "img": "/img/amg.png"
+        },
+        {
+          "id": 2,
+          "img": "/img/g2.webp"
+        },
+        {
+          "id": 3,
+          "img": "/img/g3.jpg"
+        }
+      ],
+      "img": "/img/galic.png",
+      "category": "crossover",
+      "model": "jeep"
+    },
+    {
+      "id": 6,
+      "title": "Mazerrati Y",
+      "year": "2021",
+      "brend": "mazerrati",
+      "price": "135",
+      "images": [
+        {
+          "id": 1,
+          "img": "/img/maze.png"
+        },
+        {
+          "id": 2,
+          "img": "/img/maze2.avif"
+        },
+        {
+          "id": 3,
+          "img": "/img/maze3.jpg"
+        }
+      ],
+      "img": "/img/maze.png",
+      "category": "premium",
+      "model": "sport"
+    },
+    {
+      "id": 7,
+      "title": "Range Rover",
+      "year": "2021",
+      "brend": "rangerover",
+      "price": "125",
+      "images": [
+        {
+          "id": 1,
+          "img": "/img/rang.png"
+        },
+        {
+          "id": 2,
+          "img": "/img/range2.webp"
+        },
+        {
+          "id": 3,
+          "img": "/img/range3.webp"
+        }
+      ],
+      "img": "/img/rang.png",
+      "category": "premium",
+      "model": "sport"
+    },
+    {
+      "id": 8,
+      "title": "BUS volvo",
+      "year": "2021",
+      "brend": "volvo",
+      "price": "95",
+      "images": [
+        {
+          "id": 1,
+          "img": "/img/bus.jpeg"
+        },
+        {
+          "id": 2,
+          "img": "/img/bus2.jpg"
+        },
+        {
+          "id": 3,
+          "img": "/img/bus3.jpg"
+        }
+      ],
+      "img": "/img/bus.jpeg",
+      "category": "avtobus",
+      "model": "avtobus"
+    },
+    {
+      "id": 9,
+      "title": "Mrcedes Vito",
+      "year": "2021",
+      "brend": "mercedes",
+      "price": "155",
+      "images": [
+        {
+          "id": 1,
+          "img": "/img/vito3.jpg"
+        },
+        {
+          "id": 2,
+          "img": "/img/vito1.jpg"
+        },
+        {
+          "id": 3,
+          "img": "/img/virto2.jpg"
+        }
+      ],
+      "img": "/img/vito1.jpg",
+      "category": "biznes",
+      "model": "vito"
+    }
+  ]
+}

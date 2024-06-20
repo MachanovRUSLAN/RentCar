@@ -1,0 +1,19 @@
+.box-img-2::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 10px;
+  left: 10px;
+  background: url("/img/audi.jpg");
+  background-size: cover;
+  background-position: center;
+}
+@media (max-width: 992px) {
+  .box-img-2 {
+    order: 1;
+  }
+  .div {
+    order: 2;
+  }
+}

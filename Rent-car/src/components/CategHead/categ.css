@@ -1,0 +1,40 @@
+.paginate22 {
+  width: 200px;
+
+  margin: auto;
+}
+#root > div:nth-child(2) > div.paginate22 > ul {
+  display: flex;
+}
+#root > div:nth-child(2) > div.paginate22 > ul > li.previous.disabled {
+  font-size: 18px;
+  list-style: none;
+  text-decoration: none;
+}
+#root > div:nth-child(2) > div.paginate22 > ul > li {
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 40px;
+  border-radius: 5px;
+  margin: 5px;
+  color: rgb(75, 71, 71);
+}
+#root > div:nth-child(2) > div.paginate22 > ul > li:hover {
+  background: #f36f20;
+  color: #fff;
+}
+
+#root > div:nth-child(2) > div.paginate22 > ul > li.previous.disabled > a {
+  text-decoration: none;
+  color: rgb(75, 71, 71);
+}
+.next {
+  font-size: 18px;
+}
+.next a {
+  text-decoration: none;
+  color: rgb(75, 71, 71);
+}
