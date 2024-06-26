@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 function ByClassRes() {
+  const port = import.meta.env.VITE_PORT
   const [data, setData] = useState([]);
   const [filterCategory, setFilterCategory] = useState([]);
   const [category, setCategory] = useState("");
   const [limit, setLimit] = useState(4);
 
   useEffect(() => {
-    fetch("http://localhost:3000/cars")
+    fetch(`${port}/cars`)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
